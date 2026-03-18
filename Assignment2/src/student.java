@@ -1,3 +1,3 @@
-public class student {
+public class Student {
     
 }
