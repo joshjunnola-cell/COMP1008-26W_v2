@@ -5,6 +5,7 @@ abstract class Course {
     private String code;
     private String name;
     private String teacher;
+    private String delivery;
     
     // Constructor 
     public Course(String code, String name, String teacher){
@@ -12,6 +13,10 @@ abstract class Course {
         this.code = code;
         this.name = name;
         this.teacher = teacher;
+    }
+
+    public String getDelivery() {
+        return delivery;
     }
 
     //Getter and setter for code/name/teacher
