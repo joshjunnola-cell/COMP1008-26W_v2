@@ -5,15 +5,22 @@ public abstract class Person {
     private String email;
 
     public Person(String name, String id, String email){
+        //Initialize fields
         this.name = name;
         this.id = id;
         this.email = email;
     }
 
+    //Getters
+    public abstract String getName();
+    public abstract String getId();
+    public abstract String getEmail();
+
+    
 }
     //Extend Person in child classes
 class Student extends Person {
-
+    
 }
 
     //Extend Person in child classes
