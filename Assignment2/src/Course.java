@@ -27,10 +27,7 @@ abstract class Course {
     }
         // Sets name and checks that user is not trying to enter a blank
     public void setName(String name) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("Course name cannot be empty.");
-        }
-        this.name = name;
+        this.name = (!(name == null || name.isBlank())) ? name : this.name;
     }
 
     public String getTeacher() {
@@ -43,13 +40,6 @@ abstract class Course {
 
     // Abstract method used for polymorphism
     public abstract String getDetails();
-
-    // Returns new format
-    @Override
-    public String toString() {
-        return String.format("Course Name: %s%nCourse Code: %s%nInstructor: %s",
-                            getName(), getCode(), getTeacher());
-    }
 
 }
 
@@ -81,13 +71,43 @@ class OnlineCourse extends Course{
     //Where the course is to be delivered
     private String platform;
 
+    //Creates a new OnlineCourse object
     public OnlineCourse(String code, String name, String teacher, String platform) {
         super(code, name, teacher);
         this.platform = platform;
+    }
+
+    //Returns formatted string that contains details only specific to Online courses
+    @Override
+    public String getDetails(){
+        return "Online Course: " + getName() +
+                "Code: " + getCode() +
+                "Instructor: " + getTeacher() +
+                "Platform: " + platform;
     }
 }
 
 //This class represents courses that hold classes both online and in-person
 class HybridCourse extends Course{
 
+    //Where the course is to be delivered
+    private String room;
+    private String platform;
+
+    //Creates a new HybridCourse object
+    public HybridCourse(String code, String name, String teacher, String room, String platform) {
+        super(code, name, teacher);
+        this.room = room;
+        this.platform = platform;
+    }
+
+    //Returns formatted string that contains details only specific to hybrid courses
+    @Override
+    public String getDetails() {
+        return "Hybrid Course: " + getName() +
+                "Code: " + getCode() +
+                "Instructor: " + getTeacher() +
+                "Room: " + room +
+                "Platform: " + platform;
+    }
 }
