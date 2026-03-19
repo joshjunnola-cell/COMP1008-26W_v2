@@ -15,9 +15,7 @@ abstract class Course {
         this.teacher = teacher;
     }
 
-    public String getDelivery() {
-        return delivery;
-    }
+    public abstract String getDelivery();
 
     //Getter and setter for code/name/teacher
     public String getCode() {
@@ -62,6 +60,11 @@ class InPersonCourse extends Course{
         this.roomNumber = room;
     }
 
+    @Override
+    public String getDelivery() {
+        return "In-Person Delivery!";
+    }
+
     //Returns formatted string that contains details only specific to in-person courses
     @Override
     public String getDetails() {
@@ -82,6 +85,11 @@ class OnlineCourse extends Course{
     public OnlineCourse(String code, String name, String teacher, String platform) {
         super(code, name, teacher);
         this.platform = platform;
+    }
+
+    @Override
+    public String getDelivery() {
+        return "Online Delivery!";
     }
 
     //Returns formatted string that contains details only specific to Online courses
@@ -126,9 +134,11 @@ class HybridCourse extends Course{
 
         //Random Week
         weekNumb = rand.nextInt(14) + 1;
+    }
 
-        //80% chance in-person, 20% online
-        deliveryMethod = (rand.nextDouble() < 0.80) ? "In-Person" : "Online";
+    @Override
+    public String getDelivery() {
+        return "Hybrid Delivery!";
     }
 
     //Returns formatted string that contains details only specific to hybrid courses
