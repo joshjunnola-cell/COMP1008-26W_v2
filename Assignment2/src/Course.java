@@ -22,6 +22,6 @@ class OnlineCourse extends Course{
 
 }
 
-class HybdridCourse extends Course{
+class HybridCourse extends Course{
 
 }
