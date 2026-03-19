@@ -28,10 +28,10 @@ public class Validator {
             //If input is not empty, and in wrong format print error information
             if (!input.isEmpty()){
                 //Print error message letting the user know to input using the Correct format
-                System.out.println("Error: Student ID must be in valid format (S-####)");
+                System.out.println("Error: Student ID must be in valid format (S-####).");
             }
             //Prompt user for Student ID
-            System.out.print("Enter Student ID (S-####):");
+            System.out.print("Enter Student ID (S-####): ");
             //Retrieve input from user with scanner
             input = scanner.nextLine();
             //Loop back to while statement to validate Student ID
@@ -43,8 +43,27 @@ public class Validator {
     }
 
     public static String inputValidEmail(){
-        
-        return "";
+        //Open instance of Scanner object from java.util.Scanner
+        Scanner scanner = new Scanner(System.in);
+        //Declare empty String to hold user input
+        String input = "";
+        //While input is not in valid Email format
+        while (!validateEmail(input)) { 
+            //If input is not empty, and in wrong format print error information
+            if (!input.isEmpty()){
+                //Print error message letting the user know to input using the Correct format
+                System.out.println("Error: Email must be in valid format.");
+            }
+            //Prompt user for Email
+            System.out.print("Enter Email: ");
+            //Retrieve input from user with scanner
+            input = scanner.nextLine();
+            //Loop back to while statement to validate Email
+        }
+        //Close Scanner instance
+        scanner.close();
+        //Return validated input, with uniform letter format (Lowercase)
+        return input.toLowerCase();
     }
     
 }
