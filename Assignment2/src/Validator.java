@@ -10,8 +10,11 @@ public class Validator {
         return input.matches(studentIdRegex);
     }
 
-    public static void validateEmail(String input){
-
+    public static boolean validateEmail(String input){
+        //Set Email format
+        String emailRegex = "^[A-za-z0-9+_.-]+@[A-za-z0-9+_.-]+$";
+        //return wether the email passed in in the correct format
+        return input.matches(emailRegex);
     }
 
 
