@@ -1,3 +1,5 @@
+import java.util.Random;
+
 abstract class Course {
     
     private String code;
@@ -59,9 +61,9 @@ class InPersonCourse extends Course{
     @Override
     public String getDetails() {
         return "In-Person Course: " + getName() + 
-                "Code: " + getCode() +
-                "Instructor: " + getTeacher() +
-                "Room: " + roomNumber;
+                " | Code: " + getCode() +
+                " | Instructor: " + getTeacher() +
+                " | Room: " + roomNumber;
     }
 }
 
@@ -81,9 +83,9 @@ class OnlineCourse extends Course{
     @Override
     public String getDetails(){
         return "Online Course: " + getName() +
-                "Code: " + getCode() +
-                "Instructor: " + getTeacher() +
-                "Platform: " + platform;
+                " | Code: " + getCode() +
+                " | Instructor: " + getTeacher() +
+                " | Platform: " + platform;
     }
 }
 
@@ -93,21 +95,48 @@ class HybridCourse extends Course{
     //Where the course is to be delivered
     private String room;
     private String platform;
+    private String dayOfWeek;
+    private int weekNumb;
+    private String deliveryMethod;
+
+    //Array including days of week
+    private static final String[] days = {
+        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
+    };
 
     //Creates a new HybridCourse object
     public HybridCourse(String code, String name, String teacher, String room, String platform) {
         super(code, name, teacher);
         this.room = room;
         this.platform = platform;
+        assignRandSchedule();
+    }
+
+    //Allows user to assign a random schedule
+    private void assignRandSchedule() {
+        Random rand = new Random();
+
+        //Random day
+        dayOfWeek = days[rand.nextInt(days.length)];
+
+        //Random Week
+        weekNumb = rand.nextInt(14) + 1;
+
+        //80% chance in-person, 20% online
+        deliveryMethod = (rand.nextDouble() < 0.80) ? "In-Person" : "Online";
     }
 
     //Returns formatted string that contains details only specific to hybrid courses
     @Override
     public String getDetails() {
+        String location = deliveryMethod.equals("In-Person") ? room : platform;
+
         return "Hybrid Course: " + getName() +
-                "Code: " + getCode() +
-                "Instructor: " + getTeacher() +
-                "Room: " + room +
-                "Platform: " + platform;
+                " | Code: " + getCode() +
+                " | Instructor: " + getTeacher() +
+                " | Week: " + weekNumb +
+                " | Day: " + dayOfWeek +
+                " | Delivery: " + deliveryMethod +
+                " | Location: " + location;
     }
 }
