@@ -23,7 +23,7 @@ public class Validator {
 
 
     // ========== Input Tools
-    
+
     //Request Student ID
     public static String inputValidStudentId(){
         //Open instance of Scanner object from java.util.Scanner
@@ -72,6 +72,49 @@ public class Validator {
         scanner.close();
         //Return validated input, with uniform letter format (Lowercase)
         return input.toLowerCase();
+    }
+
+    // ========== Menu and Interaction Tools
+
+    //Custom Menu Structure for Navigation
+    public static int menuChoice(String title, String... options){
+        //Open instance of Scanner object from java.util.Scanner
+        Scanner scanner = new Scanner(System.in);
+        //Declare an index variable to store display numbers in the foreach loop
+        int menuIndex = 0;
+        //Declare a choice variable to record user choice
+        int choice = 0; 
+        //Print Title to begin menu
+        System.out.println("\n ========= " + title + " ========= \n");
+        //For each option passed as arguments
+        for(String option : options){ 
+            //Add 1 to display index
+            menuIndex++;
+            //Print "(display index) - (option)"
+            System.out.println(menuIndex + " - " + option);
+        }
+        //While the choice of the user is out of the scope of the options
+        while(!(choice >=1 && choice <= options.length)){
+            try { 
+                //Prompt user to make a choice
+                System.out.print("\nPlease enter a number to pick a menu option: ");
+                //Parse choice from String to int, may result in NumberFormatException
+                choice = Integer.parseInt(scanner.nextLine()); 
+                //If choice is not within the scope of the options
+                if(choice < 1 || choice > options.length){ 
+                    //Print error message informing the user to pick one of the option numbers
+                    System.out.println("Error: Menu " + choice + " not found. Please only select existing menu options.");
+                }
+            //Catch if trying to parse String to int fails
+            } catch (NumberFormatException e) { 
+                //Print error message informing the user to select a number
+                System.out.println("Error: Invalid selection. Selection must be a number.");
+            } 
+        } 
+        //Close Scanner instance
+        scanner.close();
+        //Return selected menu option
+        return choice;
     }
     
 }
