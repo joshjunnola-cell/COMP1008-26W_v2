@@ -53,14 +53,41 @@ abstract class Course {
 
 }
 
+//This class represents a course held in person.
 class InPersonCourse extends Course{
 
+    //Room where the course is to be held(includes the building letter)
+    private String roomNumber; // 3 numbers 1 letter
+
+    //Creates a new InPersonCourse object
+    public InPersonCourse(String code, String name, String teacher, String room) {
+        super(code, name, teacher);
+        this.roomNumber = room;
+    }
+
+    //Returns formatted string that contains details only specific to in-person courses
+    @Override
+    public String getDetails() {
+        return "In-Person Course: " + getName() + 
+                "Code: " + getCode() +
+                "Instructor: " + getTeacher() +
+                "Room: " + roomNumber;
+    }
 }
 
+//This class represents a course held online
 class OnlineCourse extends Course{
 
+    //Where the course is to be delivered
+    private String platform;
+
+    public OnlineCourse(String code, String name, String teacher, String platform) {
+        super(code, name, teacher);
+        this.platform = platform;
+    }
 }
 
+//This class represents courses that hold classes both online and in-person
 class HybridCourse extends Course{
 
 }
