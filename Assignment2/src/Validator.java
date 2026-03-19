@@ -1,15 +1,23 @@
-import java.util.Scanner;
+//Validator Utility Class
+
+
 public class Validator {
 
-    public Validator(){
+    public static void validateStudentId(String input){
+
     }
 
-    public String validateStudentId(Scanner scanner){
+    public static void validateEmail(String input){
+
+    }
+
+
+    public static String inputValidStudentId(){
 
         return "";
     }
 
-    public String validateEmail(Scanner scanner){
+    public static String inputValidEmail(){
         
         return "";
     }
