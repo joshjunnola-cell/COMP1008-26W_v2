@@ -174,7 +174,7 @@ public class Validator {
         String teacher = inputValidString(scanner, "Course Instructor");
         String room = inputValidRoomNumber(scanner);
         list.add(new InPersonCourse(code, name, teacher, room));
-        System.out.println(code + " Added.");
+        System.out.println(code + " added.");
     }
 
     //OnlineCourse(code, name, teacher, platform)
@@ -184,7 +184,7 @@ public class Validator {
         String teacher = inputValidString(scanner, "Course Instructor");
         String platform = inputValidString(scanner, "Platform");
         list.add(new OnlineCourse(code, name, teacher, platform));
-        System.out.println(code + " Added.");
+        System.out.println(code + " added.");
     }
     
     //HybridCourse(code, name, teacher, room, platform)
@@ -195,9 +195,15 @@ public class Validator {
         String room = inputValidRoomNumber(scanner);
         String platform = inputValidString(scanner, "Platform");
         list.add(new HybridCourse(code, name, teacher, room, platform));
-        System.out.println(code + " Added.");
+        System.out.println(code + " added.");
     }
-    
+    //Remove Course
+    public static void removeCourse(ArrayList<Course> list, int courseIndex){
+        String code = list.get(courseIndex).getCode();
+        list.remove(list.get(courseIndex));
+        System.out.println(code + " removed.");
+    }
+
     //Student(name, id, email, program);
     public static void addStudent(Scanner scanner, ArrayList<Person> list){
         String name = inputValidString(scanner, "Student Name");
@@ -205,7 +211,7 @@ public class Validator {
         String email = inputValidEmail(scanner);
         String program = inputValidString(scanner, "Program");
         list.add(new Student(name, id, email, program));
-        System.out.println(name + " Added.");
+        System.out.println(name + " added.");
     }
     //Instructor(name, id, email, department);
     public static void addInstructor(Scanner scanner, ArrayList<Person> list){
@@ -214,15 +220,17 @@ public class Validator {
         String email = inputValidEmail(scanner);
         String department = inputValidString(scanner, "Department");
         list.add(new Instructor(name, id, email, department));
-        System.out.println(name + " Added.");
-    }    
+        System.out.println(name + " added.");
+    }   
+    //Remove Person 
+    public static void removePerson(ArrayList<Person> list, int personIndex){
+        String id = list.get(personIndex).getId();
+        list.remove(list.get(personIndex));
+        System.out.println(id + " removed.");
+    }
 
 
-    // ========== Search Tools
-    
-    //Find Student by id or name
-
-    // ========== Menu Tools
+   // ========== Menu Tools
 
     //Custom Menu Structure for Navigation
     public static int menuChoice(Scanner scanner, String title, String... options){
