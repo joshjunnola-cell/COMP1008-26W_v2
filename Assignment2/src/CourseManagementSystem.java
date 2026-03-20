@@ -2,10 +2,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CourseManagementSystem {
+    //Stores all courses and person objects in arrays
     private static ArrayList<Course> coursesTaught = new ArrayList<>();
     private static ArrayList<Person> personList = new ArrayList<>();
 
+    //Displays info about either people or courses, filters by type using validator.menuChoice
     public static void displayInfo(Scanner scanner, String object) {
+        
+        //displays person list
         if (object.equals("Person")) {
             switch (Validator.menuChoice(scanner, "Display Person List", "All", "Students", "Instructors")) {
                 case 1:
@@ -18,6 +22,7 @@ public class CourseManagementSystem {
                     Validator.menuChoice(scanner, "Instructors", personList, 2, true, false);
                     break;
             }
+        // displays course list
         } else if (object.equals("Course")) {
             switch (Validator.menuChoice(scanner, "Display Course List", "All", "In Person", "Online", "Hybrid")) {
                 case 1:
@@ -36,6 +41,7 @@ public class CourseManagementSystem {
         }
     }
 
+    //Adds either a person or course depending on user selection
     public static void add(Scanner scanner, String object) {
         if (object.equals("Person")) {
             switch (Validator.menuChoice(scanner, "Select Person Type to Add", "Student", "Instructor")) {
@@ -61,29 +67,35 @@ public class CourseManagementSystem {
         }
     }
 
+    //Removes either a Person or course depending on user selection
     public static void remove(Scanner scanner, String object) {
         if (object.equals("Person")) {
             switch (Validator.menuChoice(scanner, "Select Person Type to Remove", "Student", "Instructor")) {
-                case 1:
+
+                case 1: // removes student
                     Validator.removePerson(personList,
                             Validator.menuChoice(scanner, "Select Student to Remove", personList, 1, false, true));
                     break;
-                case 2:
+
+                case 2: // removes instructor
                     Validator.removePerson(personList,
                             Validator.menuChoice(scanner, "Select Instructor to Remove", personList, 2, false, true));
                     break;
             }
         } else if (object.equals("Course")) {
             switch (Validator.menuChoice(scanner, "Select Course Type to Remove", "In Person", "Online", "Hybrid")) {
-                case 1:
+
+                case 1: //remove in-person course
                     Validator.removeCourse(coursesTaught, Validator.menuChoice(scanner, "Select Course to Remove",
                             coursesTaught, "In-Person Delivery!", false, true));
                     break;
-                case 2:
+
+                case 2: //remove online course
                     Validator.removeCourse(coursesTaught, Validator.menuChoice(scanner, "Select Course to Remove",
                             coursesTaught, "Online Delivery!", false, true));
                     break;
-                case 3:
+
+                case 3: //remove hybrid course
                     Validator.removeCourse(coursesTaught, Validator.menuChoice(scanner, "Select Course to Remove",
                             coursesTaught, "Hybrid Delivery!", false, true));
                     break;
@@ -117,6 +129,7 @@ public class CourseManagementSystem {
         }
     }
 
+    //menu for all person-related operations
     public static void personMenu(Scanner scanner) {
         boolean localMenuActive = true;
         while (localMenuActive) {
@@ -146,6 +159,7 @@ public class CourseManagementSystem {
 
     }
 
+    //all course-related operations
     public static void courseMenu(Scanner scanner) {
         boolean localMenuActive = true;
         while (localMenuActive) {
@@ -171,6 +185,7 @@ public class CourseManagementSystem {
 
     }
 
+    //main entry for Course Management System
     public static void main(String[] args) {
         // Open instance of Scanner object
         Scanner scanner = new Scanner(System.in);
