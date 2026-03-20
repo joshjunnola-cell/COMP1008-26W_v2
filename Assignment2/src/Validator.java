@@ -176,7 +176,6 @@ public class Validator {
         list.add(new InPersonCourse(code, name, teacher, room));
         System.out.println(code + " added.");
     }
-
     //OnlineCourse(code, name, teacher, platform)
     public static void addOnlineCourse(Scanner scanner, ArrayList<Course> list){
         String code = inputValidCourseCode(scanner);
@@ -186,7 +185,6 @@ public class Validator {
         list.add(new OnlineCourse(code, name, teacher, platform));
         System.out.println(code + " added.");
     }
-    
     //HybridCourse(code, name, teacher, room, platform)
     public static void addHybridCourse(Scanner scanner, ArrayList<Course> list){
         String code = inputValidCourseCode(scanner);
@@ -229,7 +227,6 @@ public class Validator {
         System.out.println(id + " removed.");
     }
 
-
    // ========== Menu Tools
 
     //Custom Menu Structure for Navigation
@@ -269,7 +266,7 @@ public class Validator {
         return choice;
     }
     
-    public static int menuChoice(Scanner scanner, String title, ArrayList<Person> list, int filterPersonType){
+    public static int menuChoice(Scanner scanner, String title, ArrayList<Person> list, int filterPersonType, boolean verbose){
         //Declare a choice variable to record user choice
         int choice = 0; 
         //Declare ArrayList<Integer> to hold display order relation to list index
@@ -282,8 +279,13 @@ public class Validator {
             if((((list.get(i)).getPersonType()) == filterPersonType) || filterPersonType == 0){
                 //Adds the index of the item in the Master list to the list of diplayed items
                 displayIndex.add(i);
-                //Print "(current list item #) - (item)"
-                System.out.println(String.valueOf(displayIndex.size()) + " - " + (list.get(i)).getName());
+                if (verbose) {
+                    //Print "(current list item #. \n all details)
+                    System.out.println(String.valueOf(displayIndex.size()) + ". \n" + (list.get(i)).getDetails() + "\n");
+                } else {
+                    //Print "(current list item #) - (item)"
+                    System.out.println(String.valueOf(displayIndex.size()) + " - " + (list.get(i)).getName());
+                }    
             }
         }
         //While the choice of the user is out of the scope of the options
@@ -309,7 +311,7 @@ public class Validator {
     }
     
     //Custom Menu Structure for Selection from Course objects
-    public static int menuChoice(Scanner scanner, String title, ArrayList<Course> list, String filterDelivery){
+    public static int menuChoice(Scanner scanner, String title, ArrayList<Course> list, String filterDelivery, boolean verbose){
         //Declare a choice variable to record user choice
         int choice = 0; 
         //Declare ArrayList<Integer> to hold display order relation to list index
@@ -322,8 +324,13 @@ public class Validator {
             if((((list.get(i)).getDelivery()).equals(filterDelivery)) || filterDelivery.equals("none")){
                 //Adds the index of the item in the Master list to the list of diplayed items
                 displayIndex.add(i);
-                //Print "(current list item #) - (item)"
-                System.out.println(String.valueOf(displayIndex.size()) + " - " + (list.get(i)).getName());
+                if (verbose) {
+                    //Print "(current list item #. \n all details)
+                    System.out.println(String.valueOf(displayIndex.size()) + ". \n" + (list.get(i)).getDetails() + "\n");
+                } else {
+                    //Print "(current list item #) - (item)"
+                    System.out.println(String.valueOf(displayIndex.size()) + " - " + (list.get(i)).getName());
+                } 
             }
         }
         //While the choice of the user is out of the scope of the options
