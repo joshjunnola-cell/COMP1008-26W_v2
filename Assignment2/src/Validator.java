@@ -9,7 +9,7 @@ public class Validator {
     private static boolean validateStudentId(String input){
         //Set Student ID format
         String studentIdRegex = "^[sS]-[0-9]{4}$";
-        //Return wether the Student ID passed is in the correct format
+        //Return whether the Student ID passed is in the correct format
         return input.matches(studentIdRegex);
     }
 
@@ -17,12 +17,17 @@ public class Validator {
     private static boolean validateEmail(String input){
         //Set Email format
         String emailRegex = "^[A-za-z0-9+_.-]+@[A-za-z0-9+_.-]+$";
-        //Return wether the email passed in in the correct format
+        //Return whether the email passed in in the correct format
         return input.matches(emailRegex);
     }
 
-    //Validate Room Number ^[A-za-z][0-9]{3}$
-
+    //Validate Room Number
+    private static boolean validateEmployeeId(String input){
+        //Set Employee ID format
+        String employeeIdRegex = "^[A-Za-z][0-9]{3}$";
+        //Return whether the Employee ID passed is in the correct format
+        return input.matches(employeeIdRegex);
+    }
 
     // ========== Input Tools
 
@@ -68,7 +73,11 @@ public class Validator {
         return input.toLowerCase();
     }
 
-    // ========== Menu and Interaction Tools
+    // ========== Add/Remove Object Tools
+
+    // ========== Search Tools
+
+    // ========== Menu Tools
 
     //Custom Menu Structure for Navigation
     public static int menuChoice(Scanner scanner, String title, String... options){
