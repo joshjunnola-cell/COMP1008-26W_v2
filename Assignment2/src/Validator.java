@@ -82,8 +82,30 @@ public class Validator {
     }
 
     // ========== Add/Remove Object Tools
+    //InPersonCourse(code, name, teacher, room)
+    public static void addInPersonCourse(){
+
+    }
+
+    //OnlineCourse(code, name, teacher, platform)
+    public static void addOnlineCourse(){
+
+    }
+    
+    //HybridCourse(code, name, teacher, room, platform)
+    public static void addHybridCourse(){
+
+    }
+    
+
+    //Student(name, id, email, program);
+    //Instructor(name, id, email, department);
+        
+
 
     // ========== Search Tools
+    
+    //Find Student by id or name
 
     // ========== Menu Tools
 
@@ -123,6 +145,7 @@ public class Validator {
         //Return selected menu option
         return choice;
     }
+    
     public static int menuChoice(Scanner scanner, String title, ArrayList<Person> list, int filterPersonType){
         //Declare a choice variable to record user choice
         int choice = 0; 
