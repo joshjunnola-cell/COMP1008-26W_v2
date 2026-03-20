@@ -22,11 +22,19 @@ public class Validator {
     }
 
     //Validate Room Number
+    private static boolean validateRoomNumber(String input){
+        //Set Room Number format
+        String employeeIdRegex = "^[A-Za-z][0-9]{3}$";
+        //Return whether the Room Number passed is in the correct format
+        return input.matches(employeeIdRegex);
+    }
+
+    //Validate Employee ID Format
     private static boolean validateEmployeeId(String input){
         //Set Employee ID format
-        String employeeIdRegex = "^[A-Za-z][0-9]{3}$";
+        String studentIdRegex = "^[eE]-[0-9]{4}$";
         //Return whether the Employee ID passed is in the correct format
-        return input.matches(employeeIdRegex);
+        return input.matches(studentIdRegex);
     }
 
     // ========== Input Tools
