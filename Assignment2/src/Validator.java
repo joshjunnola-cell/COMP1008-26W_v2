@@ -106,6 +106,45 @@ public class Validator {
         //Return selected menu option
         return choice;
     }
+    public static int menuChoice(Scanner scanner, String title, ArrayList<Person> list, int filterPersonType){
+        //Declare a choice variable to record user choice
+        int choice = 0; 
+        //Declare ArrayList<Integer> to hold display order relation to list index
+        ArrayList<Integer> displayIndex = new ArrayList<>(); 
+        //Print Title to begin menu
+        System.out.println("\n ========= " + title + " ========= \n");
+        //For each option passed as arguments
+        for (int i = 0; i < list.size(); i++){
+            //If filter is set and item.getDelivery() equals filterDelivery, or if filter is none, display current item 
+            if((((list.get(i)).getPersonType()) == filterPersonType) || filterPersonType == 0){
+                //Adds the index of the item in the Master list to the list of diplayed items
+                displayIndex.add(i);
+                //Print "(current list item #) - (item)"
+                System.out.println(String.valueOf(displayIndex.size()) + " - " + (list.get(i)).getName());
+            }
+        }
+        //While the choice of the user is out of the scope of the options
+        while(!(choice >=1 && choice <= displayIndex.size())){
+            try { 
+                //Prompt user to make a choice
+                System.out.print("\nPlease enter a number to pick a menu option: ");
+                //Parse choice from String to int, may result in NumberFormatException
+                choice = Integer.parseInt(scanner.nextLine()); 
+                //If choice is not within the scope of the options
+                if(choice < 1 || choice > list.size()){ 
+                    //Print error message informing the user to pick one of the option numbers
+                    System.out.println("Error: Menu " + choice + " not found. Please only select existing menu options.");
+                }
+            //Catch if trying to parse String to int fails
+            } catch (NumberFormatException e) { 
+                //Print error message informing the user to select a number
+                System.out.println("Error: Invalid selection. Selection must be a number.");
+            } 
+        } 
+        //Return selected menu option by its relation to the Master list index saved in displayIndex
+        return displayIndex.get(choice - 1);
+    }
+    
     //Custom Menu Structure for Selection from Course objects
     public static int menuChoice(Scanner scanner, String title, ArrayList<Course> list, String filterDelivery){
         //Declare a choice variable to record user choice
@@ -120,7 +159,7 @@ public class Validator {
             if((((list.get(i)).getDelivery()).equals(filterDelivery)) || filterDelivery.equals("none")){
                 //Adds the index of the item in the Master list to the list of diplayed items
                 displayIndex.add(i);
-                //Print "(i+1) - (item)"
+                //Print "(current list item #) - (item)"
                 System.out.println(String.valueOf(displayIndex.size()) + " - " + (list.get(i)).getName());
             }
         }
