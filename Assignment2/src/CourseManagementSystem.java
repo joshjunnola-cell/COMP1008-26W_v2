@@ -33,7 +33,7 @@ public class CourseManagementSystem {
         } else if (object.equals("Course")) {
             switch (Validator.menuChoice(scanner, "Display Course List", "All", "In Person", "Online", "Hybrid")) {
                 case 1:
-                    Validator.menuChoice(scanner, "All", coursesTaught, "", true, false);
+                    Validator.menuChoice(scanner, "All", coursesTaught, "none", true, false);
                     break;
                 case 2:
                     Validator.menuChoice(scanner, "In Person", coursesTaught, "In-Person Delivery!", true, false);

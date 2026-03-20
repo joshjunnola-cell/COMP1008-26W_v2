@@ -155,14 +155,13 @@ class HybridCourse extends Course{
     public String getDetails() {
         
         //selects correct location based on delivery method
-        String location = deliveryMethod.equals("In-Person") ? room : platform;
+        this.deliveryMethod = (Math.random() < 0.8) ? "In-Person" : "Online";
 
         return "Hybrid Course: " + getName() +
                 " | Code: " + getCode() +
                 " | Instructor: " + getTeacher() +
                 " | Week: " + weekNumb +
                 " | Day: " + dayOfWeek +
-                " | Delivery: " + deliveryMethod +
-                " | Location: " + location;
+                " | Delivery: " + deliveryMethod;
     }
 }
