@@ -1,12 +1,15 @@
 import java.util.Random;
 
+//Creates a abstract class representing a general course
+//contains common fields and behaviour shared by all course types
 abstract class Course {
     
+    //encapsulated fields common to all courses
     private String code;
     private String name;
     private String teacher;
     
-    // Constructor 
+    // Constructor
     public Course(String code, String name, String teacher){
         // Initialize fields
         this.code = code;
@@ -15,6 +18,7 @@ abstract class Course {
     }
 
     // Abstract method used for polymorphism
+    //each course type returns its own delivery description
     public abstract String getDelivery();
 
     //Getter and setter for code/name/teacher
@@ -30,7 +34,7 @@ abstract class Course {
     public String getName() {
         return name;
     }
-        // Sets name and checks that user is not trying to enter a blank
+    // Ensures name is not blank (basic)
     public void setName(String name) {
         this.name = (!(name == null || name.isBlank())) ? name : this.name;
     }
@@ -43,7 +47,7 @@ abstract class Course {
         this.teacher = teacher;
     }
 
-    // Abstract method used for polymorphism
+    // Abstract method used for polymorphism to provide their own detailed output
     public abstract String getDetails();
 
 }
@@ -52,7 +56,7 @@ abstract class Course {
 class InPersonCourse extends Course{
 
     //Room where the course is to be held(includes the building letter)
-    private String roomNumber; // 3 numbers 1 letter
+    private String roomNumber; // 1 letter 3 numbers
 
     //Creates a new InPersonCourse object
     public InPersonCourse(String code, String name, String teacher, String room) {
@@ -60,6 +64,7 @@ class InPersonCourse extends Course{
         this.roomNumber = room;
     }
 
+    //returns delivery type for polymorphism
     @Override
     public String getDelivery() {
         return "In-Person Delivery!";
@@ -87,6 +92,7 @@ class OnlineCourse extends Course{
         this.platform = platform;
     }
 
+    //returns delivery type for polymorphism
     @Override
     public String getDelivery() {
         return "Online Delivery!";
@@ -105,19 +111,21 @@ class OnlineCourse extends Course{
 //This class represents courses that hold classes both online and in-person
 class HybridCourse extends Course{
 
-    //Where the course is to be delivered
+    //location fields for hybrid delivery
     private String room;
     private String platform;
+
+    //randomized fields
     private String dayOfWeek;
     private int weekNumb;
     private String deliveryMethod;
 
-    //Array including days of week
+    //Array of possible days of week
     private static final String[] days = {
         "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
     };
 
-    //Creates a new HybridCourse object
+    //Creates a new HybridCourse object and assigns random schedule
     public HybridCourse(String code, String name, String teacher, String room, String platform) {
         super(code, name, teacher);
         this.room = room;
@@ -125,7 +133,7 @@ class HybridCourse extends Course{
         assignRandSchedule();
     }
 
-    //Allows user to assign a random schedule
+    //Assigns a random day and week for the hybrid class
     private void assignRandSchedule() {
         Random rand = new Random();
 
@@ -136,6 +144,7 @@ class HybridCourse extends Course{
         weekNumb = rand.nextInt(14) + 1;
     }
 
+    //returns delivery type for polymorphism
     @Override
     public String getDelivery() {
         return "Hybrid Delivery!";
@@ -144,6 +153,8 @@ class HybridCourse extends Course{
     //Returns formatted string that contains details only specific to hybrid courses
     @Override
     public String getDetails() {
+        
+        //selects correct location based on delivery method
         String location = deliveryMethod.equals("In-Person") ? room : platform;
 
         return "Hybrid Course: " + getName() +
