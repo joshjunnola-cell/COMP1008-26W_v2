@@ -88,7 +88,26 @@ public class Validator {
         //Return validated input, with uniform letter format (Lowercase)
         return input.toLowerCase();
     }
-
+    //Request Course Code
+    public static String inputValidCourseCode(Scanner scanner){
+        //Declare empty String to hold user input
+        String input = "";
+        //While input is not in valid Course Code format
+        while (!validateCourseCode(input)) { 
+            //If input is not empty, and in wrong format print error information
+            if (!input.isEmpty()){
+                //Print error message letting the user know to input using the Correct format
+                System.out.println("Error: Course Code must be in valid format (AAAA####).");
+            }
+            //Prompt user for Course Code
+            System.out.print("Enter Course Code (AAAA####): ");
+            //Retrieve input from user with scanner
+            input = scanner.nextLine();
+            //Loop back to while statement to validate Course Code
+        }
+        //Return validated input, with uniform letter format (Uppercase)
+        return input.toUpperCase();
+    }
     //Request Room Number
     public static String inputValidRoomNumber(Scanner scanner){
         //Declare empty String to hold user input
@@ -150,7 +169,7 @@ public class Validator {
     // ========== Add/Remove Object Tools
     //InPersonCourse(code, name, teacher, room)
     public static void addInPersonCourse(){
-        String = inputValidS
+
     }
 
     //OnlineCourse(code, name, teacher, platform)
