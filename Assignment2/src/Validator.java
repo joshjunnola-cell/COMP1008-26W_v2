@@ -203,13 +203,18 @@ public class Validator {
         String name = inputValidString(scanner, "Student Name");
         String id = inputValidStudentId(scanner);
         String email = inputValidEmail(scanner);
-        String program = inputValidString(scanner, "program");
+        String program = inputValidString(scanner, "Program");
         list.add(new Student(name, id, email, program));
         System.out.println(name + " Added.");
     }
     //Instructor(name, id, email, department);
-    public static void addInstructor(){
-        
+    public static void addInstructor(Scanner scanner, ArrayList<Person> list){
+        String name = inputValidString(scanner, "Instructor Name");
+        String id = inputValidStudentId(scanner);
+        String email = inputValidEmail(scanner);
+        String department = inputValidString(scanner, "Department");
+        list.add(new Instructor(name, id, email, department));
+        System.out.println(name + " Added.");
     }    
 
 
