@@ -214,7 +214,7 @@ public class Validator {
     //Instructor(name, id, email, department);
     public static void addInstructor(Scanner scanner, ArrayList<Person> list){
         String name = inputValidString(scanner, "Instructor Name");
-        String id = inputValidStudentId(scanner);
+        String id = inputValidEmployeeId(scanner);
         String email = inputValidEmail(scanner);
         String department = inputValidString(scanner, "Department");
         list.add(new Instructor(name, id, email, department));
