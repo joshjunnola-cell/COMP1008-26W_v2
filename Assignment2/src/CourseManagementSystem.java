@@ -4,6 +4,40 @@ public class CourseManagementSystem {
     private static ArrayList<Course> coursesTaught = new ArrayList<>();
     private static ArrayList<Person> personList = new ArrayList<>();
 
+    
+    
+    
+    
+    
+    public static void personMenu(){
+        
+    }
+    public static void courseMenu(){
+
+    }
+    public static void populate(){
+
+    }
+    
+    public static void displayInfo(String object){
+
+    }
+    public static void add(String object){
+
+    }
+    public static void remove(String object){
+
+    }
+
+    public static void searchByName(String object){
+
+    }
+    public static void searchByID(String object){
+        
+    }
+
+    
+
 
 
 
