@@ -120,8 +120,8 @@ public class CourseManagementSystem {
         
         //searches through all id's to match input
         for (Person s : personList) {
-            if (s.getId().equals(searchID)) {
-                System.out.println(s.getDetails());
+            if (s.getId().equalsIgnoreCase(searchID)) {
+                System.out.println(s.getDetails()+"\n");
                 break;
             }
         }
@@ -135,8 +135,8 @@ public class CourseManagementSystem {
 
         //searches through all name's to match input
         for (Person s : personList) {
-            if (s.getName().equals(searchName)) {
-                System.out.println(s.getDetails());
+            if (s.getName().equalsIgnoreCase(searchName)) {
+                System.out.println(s.getDetails()+"\n");
                 break;
             }
         }
