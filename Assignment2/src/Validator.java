@@ -168,8 +168,13 @@ public class Validator {
 
     // ========== Add/Remove Object Tools
     //InPersonCourse(code, name, teacher, room)
-    public static void addInPersonCourse(){
-
+    public static void addInPersonCourse(Scanner scanner, ArrayList<Course> list){
+        String code = inputValidCourseCode(scanner);
+        String name = inputValidString(scanner, "Course Name");
+        String teacher = inputValidString(scanner, "Course Instructor");
+        String room = inputValidRoomNumber(scanner);
+        list.add(new InPersonCourse(code, name, teacher, room));
+        System.out.println(code + " Added.");
     }
 
     //OnlineCourse(code, name, teacher, platform)
