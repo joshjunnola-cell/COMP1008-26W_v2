@@ -9,6 +9,35 @@ public class CourseManagementSystem {
     
     
     public static void displayInfo(Scanner scanner, String object){
+        if (object.equals("Person")) {
+            switch (Validator.menuChoice(scanner, "Display Person List", "All", "Students","Instructors")){
+                case 1:
+                    Validator.menuChoice(scanner, "All", personList, 0, true, false);
+                    break;
+                case 2:
+                    Validator.menuChoice(scanner, "Students",personList, 1, true, false);
+                    break;
+                case 3:
+                    Validator.menuChoice(scanner, "Instructors", personList, 2, true, false);
+                    break;
+            }
+        } else if(object.equals("Course")){
+            switch (Validator.menuChoice(scanner, "Display Course List", "All","In Person","Online", "Hybrid")){
+                case 1:
+                    Validator.menuChoice(scanner, "All", coursesTaught, "", true, false);
+                    break;
+                case 2:
+                    Validator.menuChoice(scanner, "In Person", coursesTaught, "In-Person Delivery!", true, false);
+                    break;
+                case 3:
+                    Validator.menuChoice(scanner, "Online", coursesTaught, "Online Delivery!", true, false);
+                    break;
+                case 4:
+                    Validator.menuChoice(scanner, "Hybrid", coursesTaught, "Hybrid Delivery!", true, false);
+                    break;
+            
+            }
+        }
 
     }
     public static void add(Scanner scanner, String object){
