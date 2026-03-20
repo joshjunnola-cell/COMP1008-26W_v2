@@ -309,8 +309,12 @@ public class Validator {
                 } 
             }
         }
+        //If list has no items, display text instead of items
+        if (list.isEmpty()) {
+            System.out.println("There's nothing here...");   
+        }
         //Return selected menu option by its relation to the Master list index saved in displayIndex
-        return displayIndex.get(choice - 1);
+        return (select) ? displayIndex.get(choice - 1) : 0;
     }
     
     //Custom Menu Structure for Selection from Course objects
@@ -357,8 +361,12 @@ public class Validator {
                 } 
             }
         }
+        //If list has no items, display text instead of items
+        if (list.isEmpty()) {
+            System.out.println("There's nothing here...");   
+        }
         //Return selected menu option by its relation to the Master list index saved in displayIndex
-        return displayIndex.get(choice - 1);
+        return (select) ? displayIndex.get(choice - 1) : 0;
     }
     
 }
