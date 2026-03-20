@@ -123,10 +123,26 @@ public class Validator {
         return input.toUpperCase();
     }
 
+    //Request generic String
+    public static String inputValidString(Scanner scanner, String stringName){
+        //Declare empty String to hold user input
+        String input = "";
+        //While input is blank
+        while (input.isBlank()) { 
+            //Prompt user for input
+            System.out.print("Enter "+stringName+": ");
+            //Retrieve input from user with scanner
+            input = scanner.nextLine();
+            //Loop back to while statement to validate String input
+        }
+        //Return non-null string
+        return input;
+    }
+
     // ========== Add/Remove Object Tools
     //InPersonCourse(code, name, teacher, room)
     public static void addInPersonCourse(){
-
+        
     }
 
     //OnlineCourse(code, name, teacher, platform)
