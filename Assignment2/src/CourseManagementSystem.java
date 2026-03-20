@@ -200,15 +200,15 @@ public class CourseManagementSystem {
     
     //Quickly fills all categories with objects upon call
     public static void populate() {
-        personList.add(new Student("Josh1", "S-001", "josh1@georgian.ca", "Computer Programming & Analysis"));
-        personList.add(new Student("Josh2", "S-002", "josh2@georgian.ca", "Computer Programming & Analysis"));
-        personList.add(new Student("Josh3", "S-003", "josh3@georgian.ca", "Computer Programming & Analysis"));
-        personList.add(new Student("Josh4", "S-004", "josh4@georgian.ca","Computer Programming & Analysis"));
+        personList.add(new Student("Josh1", "S-0001", "josh1@georgian.ca", "Computer Programming & Analysis"));
+        personList.add(new Student("Josh2", "S-0002", "josh2@georgian.ca", "Computer Programming & Analysis"));
+        personList.add(new Student("Josh3", "S-0003", "josh3@georgian.ca", "Computer Programming & Analysis"));
+        personList.add(new Student("Josh4", "S-0004", "josh4@georgian.ca","Computer Programming & Analysis"));
 
-        personList.add(new Instructor("Instructor1", "E-001", "inst1@georgian.ca", "Computer Programming"));
-        personList.add(new Instructor("Instructor2", "E-002", "inst2@georgian.ca", "Computer Programming"));
-        personList.add(new Instructor("Instructor3", "E-003", "inst3@georgian.ca", "Computer Programming"));
-        personList.add(new Instructor("Instructor4", "E-004", "inst4@georgian.ca", "Computer Programming"));
+        personList.add(new Instructor("Instructor1", "E-0001", "inst1@georgian.ca", "Computer Programming"));
+        personList.add(new Instructor("Instructor2", "E-0002", "inst2@georgian.ca", "Computer Programming"));
+        personList.add(new Instructor("Instructor3", "E-0003", "inst3@georgian.ca", "Computer Programming"));
+        personList.add(new Instructor("Instructor4", "E-0004", "inst4@georgian.ca", "Computer Programming"));
 
         coursesTaught.add(new InPersonCourse("COMP1001", "Computers and Stuff 1", "Instructor1", "K318"));
         coursesTaught.add(new InPersonCourse("COMP1002", "Computers and Stuff 2", "Instructor2", "K224"));
