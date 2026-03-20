@@ -21,20 +21,28 @@ public class Validator {
         return input.matches(emailRegex);
     }
 
+    //Validate CourseCode
+    private static boolean validateCourseCode(String input){
+        //Set courseCode format
+        String courseCodeRegex = "^[A-Za-z]{4}[0-9]{4}$";
+        //Return whether the Room Number passed is in the correct format
+        return input.matches(courseCodeRegex);
+    }
+
     //Validate Room Number
     private static boolean validateRoomNumber(String input){
         //Set Room Number format
-        String employeeIdRegex = "^[A-Za-z][0-9]{3}$";
+        String roomNumberRegex = "^[A-Za-z][0-9]{3}$";
         //Return whether the Room Number passed is in the correct format
-        return input.matches(employeeIdRegex);
+        return input.matches(roomNumberRegex);
     }
 
     //Validate Employee ID Format
     private static boolean validateEmployeeId(String input){
         //Set Employee ID format
-        String studentIdRegex = "^[eE]-[0-9]{4}$";
+        String employeeIdRegex = "^[eE]-[0-9]{4}$";
         //Return whether the Employee ID passed is in the correct format
-        return input.matches(studentIdRegex);
+        return input.matches(employeeIdRegex);
     }
 
     // ========== Input Tools
@@ -142,7 +150,7 @@ public class Validator {
     // ========== Add/Remove Object Tools
     //InPersonCourse(code, name, teacher, room)
     public static void addInPersonCourse(){
-        
+        String = inputValidS
     }
 
     //OnlineCourse(code, name, teacher, platform)
