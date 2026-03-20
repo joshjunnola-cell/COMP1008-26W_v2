@@ -102,6 +102,27 @@ public class Validator {
         return input.toUpperCase();
     }
 
+    //Request Employee ID
+    public static String inputValidEmployeeId(Scanner scanner){
+        //Declare empty String to hold user input
+        String input = "";
+        //While input is not in valid Employee ID format
+        while (!validateEmployeeId(input)) { 
+            //If input is not empty, and in wrong format print error information
+            if (!input.isEmpty()){
+                //Print error message letting the user know to input using the Correct format
+                System.out.println("Error: Employee ID must be in valid format (E-####).");
+            }
+            //Prompt user for Employee ID
+            System.out.print("Enter Employee ID (E-####): ");
+            //Retrieve input from user with scanner
+            input = scanner.nextLine();
+            //Loop back to while statement to validate Employee ID
+        }
+        //Return validated input, with uniform letter format (Uppercase)
+        return input.toUpperCase();
+    }
+
     // ========== Add/Remove Object Tools
     //InPersonCourse(code, name, teacher, room)
     public static void addInPersonCourse(){
