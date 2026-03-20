@@ -14,6 +14,7 @@ abstract class Course {
         this.teacher = teacher;
     }
 
+    // Abstract method used for polymorphism
     public abstract String getDelivery();
 
     //Getter and setter for code/name/teacher
