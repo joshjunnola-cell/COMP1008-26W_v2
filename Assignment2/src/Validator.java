@@ -188,8 +188,14 @@ public class Validator {
     }
     
     //HybridCourse(code, name, teacher, room, platform)
-    public static void addHybridCourse(){
-
+    public static void addHybridCourse(Scanner scanner, ArrayList<Course> list){
+        String code = inputValidCourseCode(scanner);
+        String name = inputValidString(scanner, "Course Name");
+        String teacher = inputValidString(scanner, "Course Instructor");
+        String room = inputValidRoomNumber(scanner);
+        String platform = inputValidString(scanner, "Platform");
+        list.add(new HybridCourse(code, name, teacher, room, platform));
+        System.out.println(code + " Added.");
     }
     
 
