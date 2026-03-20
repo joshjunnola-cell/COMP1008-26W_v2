@@ -6,6 +6,13 @@ public class CourseManagementSystem {
     private static ArrayList<Course> coursesTaught = new ArrayList<>();
     private static ArrayList<Person> personList = new ArrayList<>();
 
+
+    //Keeps displayed text until user chooses to move on
+    public static void menuHold(Scanner scanner){
+        System.out.println("Hit Enter to exit the menu.");
+        scanner.nextLine();
+    }
+
     //Displays info about either people or courses, filters by type using validator.menuChoice
     public static void displayInfo(Scanner scanner, String object) {
         
@@ -39,6 +46,8 @@ public class CourseManagementSystem {
                     break;
             }
         }
+        //Keeps displayed text until user chooses to move on
+        menuHold(scanner);
     }
 
     //Adds either a person or course depending on user selection
@@ -101,6 +110,8 @@ public class CourseManagementSystem {
                     break;
             }
         }
+        //Keeps displayed text until user chooses to move on
+        menuHold(scanner);
     }
 
     //Find Student by id search tool
@@ -114,6 +125,8 @@ public class CourseManagementSystem {
                 break;
             }
         }
+        //Keeps displayed text until user chooses to move on
+        menuHold(scanner);
     }
 
     //Find Student by name search tool
@@ -127,6 +140,8 @@ public class CourseManagementSystem {
                 break;
             }
         }
+        //Keeps displayed text until user chooses to move on
+        menuHold(scanner);
     }
 
     //menu for all person-related operations
@@ -181,7 +196,34 @@ public class CourseManagementSystem {
         }
     }
 
-    public static void populate(Scanner scanner) {
+    
+    
+    //Quickly fills all categories with objects upon call
+    public static void populate() {
+        personList.add(new Student("Josh1", "S-001", "josh1@georgian.ca", "Computer Programming & Analysis"));
+        personList.add(new Student("Josh2", "S-002", "josh2@georgian.ca", "Computer Programming & Analysis"));
+        personList.add(new Student("Josh3", "S-003", "josh3@georgian.ca", "Computer Programming & Analysis"));
+        personList.add(new Student("Josh4", "S-004", "josh4@georgian.ca","Computer Programming & Analysis"));
+
+        personList.add(new Instructor("Instructor1", "E-001", "inst1@georgian.ca", "Computer Programming"));
+        personList.add(new Instructor("Instructor2", "E-002", "inst2@georgian.ca", "Computer Programming"));
+        personList.add(new Instructor("Instructor3", "E-003", "inst3@georgian.ca", "Computer Programming"));
+        personList.add(new Instructor("Instructor4", "E-004", "inst4@georgian.ca", "Computer Programming"));
+
+        coursesTaught.add(new InPersonCourse("COMP1001", "Computers and Stuff 1", "Instructor1", "K318"));
+        coursesTaught.add(new InPersonCourse("COMP1002", "Computers and Stuff 2", "Instructor2", "K224"));
+        coursesTaught.add(new InPersonCourse("COMP1003", "Computers and Stuff 3", "Instructor3", "K320"));
+        coursesTaught.add(new InPersonCourse("COMP1004", "Computers and Stuff 4", "Instructor4", "K322"));
+
+        coursesTaught.add(new OnlineCourse("COMP1005", "Computers and Stuff 5", "Instructor5", "BlackBoard"));
+        coursesTaught.add(new OnlineCourse("COMP1006", "Computers and Stuff 6", "Instructor6", "D2L"));
+        coursesTaught.add(new OnlineCourse("COMP1007", "Computers and Stuff 7", "Instructor7", "Zoom"));
+        coursesTaught.add(new OnlineCourse("COMP1008", "Computers and Stuff 8", "Instructor8", "Carrier Pigeon"));
+
+        coursesTaught.add(new HybridCourse("COMP1009", "Computers and Stuff 9", "Instructor9", "A216", "Blackboard"));
+        coursesTaught.add(new HybridCourse("COMP1010", "Computers and Stuff 10", "Instructor10", "B124", "Blackboard"));
+        coursesTaught.add(new HybridCourse("COMP1011", "Computers and Stuff 11", "Instructor11", "M330", "Blackboard"));
+        coursesTaught.add(new HybridCourse("COMP1012", "Computers and Stuff 12", "Instructor12", "M124", "Blackboard"));
 
     }
 
@@ -189,18 +231,14 @@ public class CourseManagementSystem {
     public static void main(String[] args) {
         // Open instance of Scanner object
         Scanner scanner = new Scanner(System.in);
-        // Declare int to hold choice value
-        int choice = 0;
         // Declare active state boolean
         boolean courseManagementSystemActive = true;
 
         // While active, run Menu loop
         while (courseManagementSystemActive) {
-            // Menu configuration using choice variable and menuChoice method
-            choice = Validator.menuChoice(scanner, "Course Management System", "Person List", "Course List", "Populate",
-                    "Exit");
             // Main menu switch case choices
-            switch (choice) {
+            switch (Validator.menuChoice(scanner, "Course Management System", "Person List", "Course List", "Populate",
+                    "Exit")) {
                 case 1:
                     personMenu(scanner);
                     break;
@@ -208,7 +246,7 @@ public class CourseManagementSystem {
                     courseMenu(scanner);
                     break;
                 case 3:
-                    populate(scanner);
+                    populate();
                     break;
                 case 4:
                     courseManagementSystemActive = false;
