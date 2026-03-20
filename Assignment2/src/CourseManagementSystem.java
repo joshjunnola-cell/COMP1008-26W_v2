@@ -32,10 +32,8 @@ public class CourseManagementSystem {
                 case 4:
                     Validator.menuChoice(scanner, "Hybrid", coursesTaught, "Hybrid Delivery!", true, false);
                     break;
-
             }
         }
-
     }
 
     public static void add(Scanner scanner, String object) {
@@ -93,12 +91,30 @@ public class CourseManagementSystem {
         }
     }
 
-    public static void searchByName(Scanner scanner) {
-
+    //Find Student by id search tool
+    public static void searchByID(Scanner scanner){
+        String searchID = Validator.inputValidStudentId(scanner);
+        
+        //searches through all id's to match input
+        for (Person s : personList) {
+            if (s.getId().equals(searchID)) {
+                System.out.println(s.getDetails());
+                break;
+            }
+        }
     }
 
-    public static void searchByID(Scanner scanner) {
+    //Find Student by name search tool
+    public static void searchByName(Scanner scanner){
+        String searchName = Validator.inputValidString(scanner, "Student Name");
 
+        //searches through all name's to match input
+        for (Person s : personList) {
+            if (s.getName().equals(searchName)) {
+                System.out.println(s.getDetails());
+                break;
+            }
+        }
     }
 
     public static void personMenu(Scanner scanner) {
