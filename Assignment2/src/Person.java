@@ -11,6 +11,7 @@ public abstract class Person {
         this.email = email;
     }
 
+    // Abstract method used for polymorphism
     public abstract int getPersonType();
 
     //Getters
@@ -58,6 +59,7 @@ class Student extends Person {
         return 1;
     }
 
+    //Returns formatted string that contains details only specific to students
     @Override
     public String getDetails() {
         return "Student: " + getName() +
@@ -80,6 +82,15 @@ class Instructor extends Person {
     @Override
     public int getPersonType(){
         return 2;
+    }
+
+    //Returns formatted string that contains details only specific to instructors
+    @Override
+    public String getDetails() {
+        return "Instructor: " + getName() +
+                " | ID: " + getId() +
+                " | Email: " + getEmail() +
+                " | Department: " + department;
     }
 
 }
