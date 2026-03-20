@@ -198,10 +198,14 @@ public class Validator {
         System.out.println(code + " Added.");
     }
     
-
     //Student(name, id, email, program);
-    public static void addStudent(){
-
+    public static void addStudent(Scanner scanner, ArrayList<Person> list){
+        String name = inputValidString(scanner, "Student Name");
+        String id = inputValidStudentId(scanner);
+        String email = inputValidEmail(scanner);
+        String program = inputValidString(scanner, "program");
+        list.add(new Student(name, id, email, program));
+        System.out.println(name + " Added.");
     }
     //Instructor(name, id, email, department);
     public static void addInstructor(){
