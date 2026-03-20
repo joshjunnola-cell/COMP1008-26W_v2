@@ -81,6 +81,27 @@ public class Validator {
         return input.toLowerCase();
     }
 
+    //Request Room Number
+    public static String inputValidRoomNumber(Scanner scanner){
+        //Declare empty String to hold user input
+        String input = "";
+        //While input is not in valid Room Number format
+        while (!validateRoomNumber(input)) { 
+            //If input is not empty, and in wrong format print error information
+            if (!input.isEmpty()){
+                //Print error message letting the user know to input using the Correct format
+                System.out.println("Error: Room Number must be in valid format (A-Z###).");
+            }
+            //Prompt user for Room Number
+            System.out.print("Enter Room Number (A-Z###): ");
+            //Retrieve input from user with scanner
+            input = scanner.nextLine();
+            //Loop back to while statement to validate Room Number
+        }
+        //Return validated input, with uniform letter format (Uppercase)
+        return input.toUpperCase();
+    }
+
     // ========== Add/Remove Object Tools
     //InPersonCourse(code, name, teacher, room)
     public static void addInPersonCourse(){
@@ -99,8 +120,13 @@ public class Validator {
     
 
     //Student(name, id, email, program);
+    public static void addStudent(){
+
+    }
     //Instructor(name, id, email, department);
+    public static void addInstructor(){
         
+    }    
 
 
     // ========== Search Tools
